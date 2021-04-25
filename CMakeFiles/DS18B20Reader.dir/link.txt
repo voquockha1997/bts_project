@@ -1,0 +1,1 @@
+/usr/bin/cc -g  -rdynamic CMakeFiles/DS18B20Reader.dir/main.c.o CMakeFiles/DS18B20Reader.dir/sensor.c.o  -o DS18B20Reader 

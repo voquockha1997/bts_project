@@ -1,0 +1,3 @@
+/home/khavq/bts_project/sensor/DS18B20Reader/CMakeFiles/rebuild_cache.dir
+/home/khavq/bts_project/sensor/DS18B20Reader/CMakeFiles/DS18B20Reader.dir
+/home/khavq/bts_project/sensor/DS18B20Reader/CMakeFiles/edit_cache.dir
