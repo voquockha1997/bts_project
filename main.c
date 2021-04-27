@@ -4,7 +4,7 @@
 
 #include "main.h"
 #include "sensor.h"
-
+#define TEMP_SET 35
 
 volatile sig_atomic_t sigintFlag = 0;
 
@@ -38,7 +38,19 @@ int main(int argc, char **argv)
     }
     printf("Attached Sensors: %d\n", sensorList->SensorCount);
 
-    ReadTemperatureLoop(sensorList);        
+    while(!sigintFlag)
+    {
+        for(int i = 0; i < sensorList->SensorCount; i++)
+        {
+            float temperature = ReadTemperature(sensorList->Sensors[i]);
+            LogTemperature(sensorList->Sensors[i], temperature);
+            if (temperature > TEMP_SET)
+            {
+                /* Set ON GPIO */
+                printf("Warning temp high\n");
+            }
+        }       
+    }       
     Cleanup(sensorList);   
 }
 

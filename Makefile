@@ -1,6 +1,6 @@
 target = out
 CXX=gcc
-CFLAGS+=-I. -O3  -std=c++1y  -Wall -Wextra -Wpedantic 
+CFLAGS+=-I. -O3 -Wall -Wextra -Wpedantic 
 
 # LDFLAGS+= 
  
