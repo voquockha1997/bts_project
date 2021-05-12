@@ -1,10 +1,11 @@
 #include <stdio.h> 
 #include <time.h>
 #include <signal.h>
-
+#include <wiringPi.h>
 #include "main.h"
 #include "sensor.h"
-#define TEMP_SET 35
+#define TEMP_SET 34
+#define RELAY_1 17
 
 volatile sig_atomic_t sigintFlag = 0;
 
@@ -16,7 +17,9 @@ void onSigInt(int signum){
 int main(int argc, char **argv)
 { 
     signal(SIGINT, onSigInt);
-
+    wiringPiSetupGpio();
+    pinMode(RELAY_1, OUTPUT);
+    digitalWrite(RELAY_1, LOW);
     char **sensorNames;
     int sensorNamesCount;
     if(argc > 1)
@@ -48,7 +51,12 @@ int main(int argc, char **argv)
             {
                 /* Set ON GPIO */
                 printf("Warning temp high\n");
+		digitalWrite(RELAY_1, HIGH);
             }
+	    else
+	    {
+		digitalWrite(RELAY_1, LOW);
+	    }
         }       
     }       
     Cleanup(sensorList);   

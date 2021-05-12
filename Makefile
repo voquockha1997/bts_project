@@ -2,7 +2,7 @@ target = out
 CXX=gcc
 CFLAGS+=-I. -O3 -Wall -Wextra -Wpedantic 
 
-# LDFLAGS+= 
+LDFLAGS+=-pthread -lwiringPi -lm -lrt -lcrypt 
  
 
 SRCS = main.c \
@@ -16,7 +16,7 @@ OBJ:= $(SRCS:%.cpp=%.o)
 all: $(target)	
 
 $(target): $(OBJ)
-	$(CXX) $(CFLAGS) -o $@ $^ $(CXXFLAGS)
+	$(CXX) $(CFLAGS) -o $@ $^ $(CXXFLAGS) $(LDFLAGS)
 
 %.o : %.cpp
 	$(CXX) $(CFLAGS) -c $< -o $@
